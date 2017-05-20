@@ -14,7 +14,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/main.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
 <script src="JS/like.js" type="text/javascript"></script>
 
@@ -44,56 +45,64 @@
 			</nav>
 		</header>
 		<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<h2>ITRAVEL</h2>
-							<p>PROJECT FOR WAP<br />
-							Create by:<br /> 
-							Gloria Gallego<br />
-							Yi Cai<br />
-							Diego Lussich<br />
-							</p>
-							<ul class="actions">
-								<li><a href="Register.jsp" class="button special">REGISTER</a></li>
-							</ul>
-						</div>
-						<a href="#two" class="more scrolly">Learn More</a>
-					</section>
-		
+		<section id="banner">
+			<div class="inner">
+				<h2>ITRAVEL</h2>
+				<p>
+					PROJECT FOR WAP<br /> Create by:<br /> Gloria Gallego<br /> Yi
+					Cai<br /> Diego Lussich<br />
+				</p>
+				<ul class="actions">
+					<li><a href="Register.jsp" class="button special">REGISTER</a></li>
+				</ul>
+			</div>
+			<a href="#two" class="more scrolly">Learn More</a>
+		</section>
+
 		<!-- POST -->
 		<section id="two" class="wrapper alt style2">
 			<!-- Blog entries -->
-				<%
-			PostDao PostDao = new PostDao(); //not recommended.Pass this object from servlet
-			ImageDao ImageDao = new ImageDao();
-			String img = "";
-			ImageBean ImageBean;
-			int id;
+			<%
+				PostDao PostDao = new PostDao(); //not recommended.Pass this object from servlet
+				ImageDao ImageDao = new ImageDao();
+				String img = "";
+				ImageBean ImageBean;
+				int id;
 
-			List<PostBean> list = PostDao.listAllPost();
-			for (PostBean c : list) {
-				// The core Logic of the Registration application is present here. We
-				// are going to insert user data in to the database.
-				id = Integer.valueOf(c.getPost());
-				ImageBean = ImageDao.GetImage(id);
-				img = ImageBean.getImageString();
-		%>
+				List<PostBean> list = PostDao.listAllPost();
+				for (PostBean c : list) {
+					// The core Logic of the Registration application is present here. We
+					// are going to insert user data in to the database.
+					id = Integer.valueOf(c.getPost());
+					ImageBean = ImageDao.GetImage(id);
+					img = ImageBean.getImageString();
+			%>
 			<section class="spotlight">
 				<div class="image">
-					<img  src="<%=img%>" alt="" />
+					<%
+						if (img != null) {
+					%>
+					<img src="<%=img%>" alt="" />
+					<%
+						}
+					%>
 				</div>
 				<div class="content">
-					<h1><%=c.getPost()%></h1>
-					<h2><%=c.getDate_post()%></h2>
+					<h1>#<%=c.getPost()%></h1>
+					<h2>Publication Date: <%=c.getDate_post()%></h2>
 					<h3><%=c.getLocation()%></h3>
 					<p><%=c.getText()%></p>
 					<p>
-						<ul class="icons">
-							<li><a href="" class="icon fa-like"><span class="label"></span></a></li>
-							<li><a href="" class="icon fa-comment"><span class="label"></span></a></li>
-							<li><a href="" class="icon fa-location"><span class="label"></span></a></li>
-	
-						</ul>			
+					<ul class="icons">
+						<li><span id="L<%=c.getPost()%>"><%=c.getLikes()%></span><a
+							id="A<%=c.getPost()%>" class="icon fa-like"><span
+								class="label"></span></a></li>
+						<li><a id="B<%=c.getPost()%>" class="icon fa-comment"><span
+								class="label"></span></a></li>
+						<li><a id="C<%=c.getPost()%>"
+							class="icon fa-location"><span class="label"></span></a></li>
+
+					</ul>
 					</p>
 				</div>
 			</section>
@@ -101,14 +110,13 @@
 				}
 			%>
 
-		<!-- Footer -->
-		<footer id="footer">
-			<ul class="copyright">
-				<li>&copy; MUM</li>
-				<li>Design: GROUP TEAM</li>
-			</ul>
-		</footer>
-
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="copyright">
+					<li>&copy; MUM</li>
+					<li>Design: GROUP TEAM</li>
+				</ul>
+			</footer>
 	</div>
 
 	<!-- Scripts -->

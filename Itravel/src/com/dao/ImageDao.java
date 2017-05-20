@@ -18,7 +18,6 @@ public class ImageDao {
 		int id_image=-1;
 		int post = ImageBean.getPost();
 		InputStream image = ImageBean.getImage();
-
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
 

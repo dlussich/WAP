@@ -85,7 +85,7 @@ public class PostDao {
 	//		List<Product> list = namedParameterJdbcTemplate.query(sql, getSqlParameterByModel(null), new ProductMapper());
 	//		return list;
 				
-			String query = "select idt_post,text,idt_users,date, location from t_post order by idt_post   desc"; // Insert
+			String query = "select idt_post,text,idt_users,date, location, likes from t_post order by idt_post   desc"; // Insert
 			// user
 			// details
 			// into
@@ -108,6 +108,7 @@ public class PostDao {
 				pb.setText(rs.getString("text"));
 				pb.setUser(rs.getInt("idt_users"));
 				pb.setDate_post(rs.getDate("date"));
+				pb.setLikes(rs.getInt("likes"));
 				PostBean.add(pb);
 			}
 
@@ -117,4 +118,92 @@ public class PostDao {
 		return PostBean;
 
 	}
+	
+	
+	public int Selectlikes(PostBean PostBean) {
+
+		int like=-1;
+		int id_post = PostBean.getPost();
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			con = DBConnection.getConexion();
+			//String query = "insert into t_post(idt_post,text,idt_users) values(?,?,?)"; // Insert
+			String query = "select likes from t_post where idt_post=?"; // Insert
+			// user
+			// details
+			// into
+			// the
+			// table
+			// 'T_POST
+
+			preparedStatement = con.prepareStatement(query); // Making use of
+			// prepared
+			// statements
+			// here to
+			// insert bunch
+			// of data
+
+			//preparedStatement.setInt(1, id_post);
+			preparedStatement.setInt(1, id_post);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if (rs.next()) {// Just to ensure data has been inserted into the
+						// database			
+				like= rs.getInt("likes");
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return like; // On failure, send -1
+}
+	
+
+	public int Updatelikes(PostBean PostBean) {
+		int res=-1;
+		int id_post=PostBean.getPost();
+		int likes=PostBean.getLikes();
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			con = DBConnection.getConexion();
+			//String query = "insert into t_post(idt_post,text,idt_users) values(?,?,?)"; // Insert
+			String query = "UPDATE t_post SET likes = ? where idt_post= ?"; // Insert
+			// user
+			// details
+			// into
+			// the
+			// table
+			// 'T_POST
+
+			preparedStatement = con.prepareStatement(query); // Making use of
+			// prepared
+			// statements
+			// here to
+			// insert bunch
+			// of data
+
+			//preparedStatement.setInt(1, id_post);
+			preparedStatement.setInt(1, likes );
+			preparedStatement.setInt(2, id_post);
+			
+			//System.out.println(preparedStatement);
+			
+			int i = preparedStatement.executeUpdate();
+			//System.out.println("Resulset "+ i);
+			
+			if (i != 0) {// Just to ensure data has been inserted into the
+						// database			
+				res=i;
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res; // On failure, send -1
+}
+	
 	}

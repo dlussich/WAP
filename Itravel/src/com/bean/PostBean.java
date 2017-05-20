@@ -9,6 +9,7 @@ public class PostBean {
 	private String text; 
 	private int user;
 	private String location;
+	private int likes;
 	
 	public String getLocation() {
 		return location;
@@ -39,6 +40,12 @@ public class PostBean {
 	}
 	public void setUser(int user) {
 		this.user = user;
+	}
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
 	
 	

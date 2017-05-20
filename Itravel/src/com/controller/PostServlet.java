@@ -67,52 +67,59 @@ public class PostServlet extends HttpServlet {
 		// The core Logic of the Registration application is present here. We
 		// are going to insert user data in to the database.
 		int PostRegistered = PostDao.registerPost(PostBean);
-		if (PostRegistered !=-1) // On success, you can add the
-												// image
+		if (PostRegistered != -1) // On success, you can add the
+									// image
 		{
-			PostBean.setPost(PostRegistered);
 			ImageBean ImageBean = new ImageBean();
-			// Using Java Beans - An easiest way to play with group of related
-			// data
-			ImageBean.setPost(PostRegistered);
+				PostBean.setPost(PostRegistered);
+				// Using Java Beans - An easiest way to play with group of
+				// related
+				// data
+				ImageBean.setPost(PostRegistered);
 
-			Part part = request.getPart("image");
-
-			InputStream is = part.getInputStream();
-			ImageBean.setImage(is);
-
-			ImageDao ImageDao = new ImageDao();
-
-			// The core Logic of the Registration application is present here.
-			// We
-			// are going to insert user data in to the database.
-			int ImageRegistered = ImageDao.registerImage(ImageBean);
-
-			if (ImageRegistered!= -1) // On success, you can
-													// display a
-													// message to user on Home
-													// page
-			{	
-				ImageBean.setId_image(ImageRegistered);
+				Part part = request.getPart("image");
+				long header = part.getSize();
+				InputStream is = null; ;
+				  if(header>0){
+		                is =  part.getInputStream();
+		            }
 				
+				if (is != null) {
+				  
+				ImageBean.setImage(is);
+
+				ImageDao ImageDao = new ImageDao();
+
+				// The core Logic of the Registration application is present
+				// here.
+				// We
+				// are going to insert user data in to the database.
+				int ImageRegistered = ImageDao.registerImage(ImageBean);
+				if (ImageRegistered != -1) // On success, you can
+											// display a
+											// message to user on Home
+											// page
+				{
+					ImageBean.setId_image(ImageRegistered);
+
+					request.setAttribute("listreq", PostDao.listAllPost());
+
+					request.setAttribute("message", "Image Uploaded");
+					RequestDispatcher view = request.getRequestDispatcher("Index.jsp");
+					view.forward(request, response);
+
+				} else // On Failure, display a meaningful message to the User.
+				{
+					response.sendRedirect("Index.jsp?message=Some+Error+Occurred");
+				}
+			} else {// no image but other ok
 				request.setAttribute("listreq", PostDao.listAllPost());
-				//response.sendRedirect("result.jsp?message=Image+Uploaded");
-	
+
 				request.setAttribute("message", "Image Uploaded");
 				RequestDispatcher view = request.getRequestDispatcher("Index.jsp");
 				view.forward(request, response);
-				
-				
-				// request.getRequestDispatcher("/Home.jsp").forward(request,
-				// response);
-			} else // On Failure, display a meaningful message to the User.
-			{
-				response.sendRedirect("Index.jsp?message=Some+Error+Occurred");
-				// request.setAttribute("errMessage", ImageRegistered);
-				// request.getRequestDispatcher("/Register.jsp").forward(request,
-				// response);
-			}
 
+			}
 		} else // On Failure, display a meaningful message to the User.
 		{
 			response.sendRedirect("Index.jsp?message=Some+Error+Occurred");

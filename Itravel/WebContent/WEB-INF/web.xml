@@ -4,10 +4,7 @@
   <welcome-file-list>
     <welcome-file>Index.jsp</welcome-file>
   </welcome-file-list>
-  
-  
- 
-   <listener>
-      <listener-class>com.listener.MyServletContextListener</listener-class>
-   </listener>
+  <listener>
+    <listener-class>com.listener.MyServletContextListener</listener-class>
+  </listener>
 </web-app>

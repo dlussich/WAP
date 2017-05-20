@@ -43,9 +43,9 @@
 		<section>
 		<form action="PostServlet" method="post" enctype="multipart/form-data">
 			Tell us about your travel:
-			<textarea rows="10" cols="10" name="text_post"></textarea>
-			<br />Place visited:<input type="text" name="location" /><br /> <br />
-			<input type="file" name="image" required="required" /><br /> <br />
+			<textarea rows="10" cols="10" name="text_post" required="required"></textarea>
+			<br />Place visited:<input type="text" name="location" required="required"/><br /> <br />
+			<input type="file" name="image"/><br /> <br />
 			<input type="submit" />
 		</form>
 		</section>
