@@ -8,6 +8,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
+<script src="JS/post.js" type="text/javascript"></script>
+
 <title>CREATE POST</title>
 </head>
 <!--<body class="landing is-mobile is-menu-visible">-->
@@ -34,19 +36,32 @@
 		<section id="one" class="wrapper style1 special">
 		<div class="inner">
 			<header>
-			<h2>
-				Create Post:
-			</h2>
+			<h2>Create Post:</h2>
 			</header>
 		</div>
 		</section>
 		<section>
 		<form action="PostServlet" method="post" enctype="multipart/form-data">
 			Tell us about your travel:
-			<textarea rows="10" cols="10" name="text_post" required="required"></textarea>
-			<br />Place visited:<input type="text" name="location" required="required"/><br /> <br />
-			<input type="file" name="image"/><br /> <br />
-			<input type="submit" />
+			<textarea rows="5" cols="10" name="text_post" required="required"></textarea>
+			<br />
+			State:
+			<select id="states" name="state">
+					<option>Select State</option>
+				</select>
+			<br />
+			City:<input type="text" name="city"
+				required="required" />
+			<br /> 
+			Street:<input type="text" name="street"
+				required="required" />
+			<br /> 
+			Zip Code:<input
+				type="text" name="zip_code" pattern="[0-9]{5}"
+				title="Five digit zip code" required="required" />
+			<br /> 
+			<input
+				type="file" name="image" /><br /> <br /> <input type="submit" />
 		</form>
 		</section>
 	</div>

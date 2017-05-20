@@ -7,6 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="sun.misc.BASE64Encoder"%>
+<%@page import="com.enums.State"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html">
@@ -53,7 +54,7 @@
 					Cai<br /> Diego Lussich<br />
 				</p>
 				<ul class="actions">
-					<li><a href="Register.jsp" class="button special">REGISTER</a></li>
+					<li><a href="Post.jsp" class="button special">PUBLISH</a></li>
 				</ul>
 			</div>
 			<a href="#two" class="more scrolly">Learn More</a>
@@ -90,7 +91,8 @@
 				<div class="content">
 					<h1>#<%=c.getPost()%></h1>
 					<h2>Publication Date: <%=c.getDate_post()%></h2>
-					<h3><%=c.getLocation()%></h3>
+					<h3><%=State.valueOfAbbreviation(c.getState())+" - "+ c.getCity() %></h3>
+					<h3>Zip Code: <%=c.getZip_code()%></h3>
 					<p><%=c.getText()%></p>
 					<p>
 					<ul class="icons">

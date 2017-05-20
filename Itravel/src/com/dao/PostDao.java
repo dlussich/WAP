@@ -20,7 +20,10 @@ public class PostDao {
 		//int id_post = PostBean.getPost();
 		String text_post	=PostBean.getText();
 		int id_user=PostBean.getUser();
-		String location	=PostBean.getLocation();
+		String state	=PostBean.getState();
+		String city	=PostBean.getCity();
+		int zip_code	=PostBean.getZip_code();
+		
 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
@@ -28,7 +31,7 @@ public class PostDao {
 		try {
 			con = DBConnection.getConexion();
 			//String query = "insert into t_post(idt_post,text,idt_users) values(?,?,?)"; // Insert
-			String query = "insert into t_post(text,idt_users, location) values(?,?,?)"; // Insert
+			String query = "insert into t_post(text,idt_users, state, city, zip_code) values(?,?,?,?,?)"; // Insert
 			// user
 			// details
 			// into
@@ -46,7 +49,9 @@ public class PostDao {
 			//preparedStatement.setInt(1, id_post);
 			preparedStatement.setString(1, text_post);
 			preparedStatement.setInt(2, id_user);
-			preparedStatement.setString(3, location);
+			preparedStatement.setString(3, state);
+			preparedStatement.setString(4, city);
+			preparedStatement.setInt(5, zip_code);
 			
 			int i = preparedStatement.executeUpdate();
 
@@ -85,7 +90,14 @@ public class PostDao {
 	//		List<Product> list = namedParameterJdbcTemplate.query(sql, getSqlParameterByModel(null), new ProductMapper());
 	//		return list;
 				
-			String query = "select idt_post,text,idt_users,date, location, likes from t_post order by idt_post   desc"; // Insert
+			String query = "select idt_post,"
+					+ "text,"
+					+ "idt_users,"
+					+ "date, "
+					+ "state, "
+					+ "city, "
+					+ "zip_code ,"
+					+ "likes from t_post order by idt_post   desc"; // Insert
 			// user
 			// details
 			// into
@@ -104,11 +116,13 @@ public class PostDao {
 			while (rs.next()) {
 				PostBean pb= new PostBean();
 				pb.setPost(rs.getInt("idt_post"));
-				pb.setLocation(rs.getString("location"));
 				pb.setText(rs.getString("text"));
 				pb.setUser(rs.getInt("idt_users"));
 				pb.setDate_post(rs.getDate("date"));
 				pb.setLikes(rs.getInt("likes"));
+				pb.setState(rs.getString("state"));
+				pb.setCity(rs.getString("city"));
+				pb.setZip_code(rs.getInt("zip_code"));
 				PostBean.add(pb);
 			}
 
@@ -128,7 +142,6 @@ public class PostDao {
 		PreparedStatement preparedStatement = null;
 		try {
 			con = DBConnection.getConexion();
-			//String query = "insert into t_post(idt_post,text,idt_users) values(?,?,?)"; // Insert
 			String query = "select likes from t_post where idt_post=?"; // Insert
 			// user
 			// details
@@ -169,7 +182,6 @@ public class PostDao {
 		PreparedStatement preparedStatement = null;
 		try {
 			con = DBConnection.getConexion();
-			//String query = "insert into t_post(idt_post,text,idt_users) values(?,?,?)"; // Insert
 			String query = "UPDATE t_post SET likes = ? where idt_post= ?"; // Insert
 			// user
 			// details

@@ -54,13 +54,23 @@ public class PostServlet extends HttpServlet {
 		int id_user = 1;
 
 		String text_post = request.getParameter("text_post");
-		String location = request.getParameter("location");
+		String state = request.getParameter("state");
+		System.out.println(state);
+		String city = request.getParameter("city");
+		int zip_code=0;
+		if(request.getParameter("zip_code") != null){
+			zip_code= Integer.parseInt(request.getParameter("zip_code"));
+			
+		}
 
 		PostBean PostBean = new PostBean();
 		// Using Java Beans - An easiest way to play with group of related data
 		PostBean.setText(text_post);
 		PostBean.setUser(id_user);
-		PostBean.setLocation(location);
+		PostBean.setState(state);
+		PostBean.setCity(city);
+		PostBean.setZip_code(zip_code);
+		
 
 		PostDao PostDao = new PostDao();
 
