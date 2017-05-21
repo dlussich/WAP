@@ -33,6 +33,12 @@ public class RegisterServlet extends HttpServlet {
 
 		// Copying all the input parameters in to local variables
 		String fullName = request.getParameter("fullname");
+		String gender = request.getParameter("gender");
+		String state = request.getParameter("state");
+		String city = request.getParameter("city");
+		String street = request.getParameter("street");
+		String zipCode = request.getParameter("zipcode");
+		String birthYear = request.getParameter("birthyear");
 		String email = request.getParameter("email");
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -40,6 +46,12 @@ public class RegisterServlet extends HttpServlet {
 		RegisterBean registerBean = new RegisterBean();
 		// Using Java Beans - An easiest way to play with group of related data
 		registerBean.setFullName(fullName);
+		registerBean.setGender(gender);
+		registerBean.setState(state);
+		registerBean.setCity(city);
+		registerBean.setStreet(street);
+		registerBean.setZipCode(zipCode);
+		registerBean.setBirthYear(birthYear);
 		registerBean.setEmail(email);
 		registerBean.setUserName(userName);
 		registerBean.setPassword(password);
@@ -55,6 +67,8 @@ public class RegisterServlet extends HttpServlet {
 		if (userRegistered.equals("SUCCESS")) // On success, you can display a
 												// message to user on Home page
 		{
+			// set session as "user"
+			request.getSession().setAttribute("user", registerBean);
 			request.getRequestDispatcher("/Home.jsp").forward(request, response);
 		} else // On Failure, display a meaningful message to the User.
 		{
