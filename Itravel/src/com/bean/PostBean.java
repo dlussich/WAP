@@ -12,8 +12,14 @@ public class PostBean {
 	private String state;
 	private String city;
 	private int zip_code;
+	private String image; // AGREGADO DESPUES DE DIEGO
 	
-
+	public String getImage() { // AGREGADO DESPUES DE DIEGO
+		return image;
+	}
+	public void setImage(String image) {// AGREGADO DESPUES DE DIEGO
+		this.image = image;
+	}
 	public int getPost() {
 		return post;
 	}

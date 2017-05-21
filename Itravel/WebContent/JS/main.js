@@ -14,5 +14,11 @@ $(function() {
 				$('body').addClass("is-menu-visible");
 
 			});
+	//inicialize list of post.
+	$.ajax("MainServlet", {
+		"type" : "post"
+	}).fail(function() {
+		console.log("Failed");
+	})
 });
 

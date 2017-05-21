@@ -112,27 +112,23 @@ public class PostServlet extends HttpServlet {
 				{
 					ImageBean.setId_image(ImageRegistered);
 
-					request.setAttribute("listreq", PostDao.listAllPost());
-
-					request.setAttribute("message", "Image Uploaded");
 					RequestDispatcher view = request.getRequestDispatcher("Index.jsp");
 					view.forward(request, response);
 
 				} else // On Failure, display a meaningful message to the User.
 				{
-					response.sendRedirect("Index.jsp?message=Some+Error+Occurred");
+					response.sendRedirect("Index.jsp");
 				}
 			} else {// no image but other ok
 				request.setAttribute("listreq", PostDao.listAllPost());
 
-				request.setAttribute("message", "Image Uploaded");
 				RequestDispatcher view = request.getRequestDispatcher("Index.jsp");
 				view.forward(request, response);
 
 			}
 		} else // On Failure, display a meaningful message to the User.
 		{
-			response.sendRedirect("Index.jsp?message=Some+Error+Occurred");
+			response.sendRedirect("Index.jsp");
 		}
 
 	}

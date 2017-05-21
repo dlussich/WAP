@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import com.bean.ImageBean;
 import com.bean.PostBean;
 import com.util.DBConnection;
 
@@ -123,7 +124,16 @@ public class PostDao {
 				pb.setState(rs.getString("state"));
 				pb.setCity(rs.getString("city"));
 				pb.setZip_code(rs.getInt("zip_code"));
+				
+				
+				// AGREGADO DESPUES DE DIEGO
+				ImageDao ImageDao = new ImageDao();
+				ImageBean ImageBean =ImageDao.GetImage(rs.getInt("idt_post"));
+				pb.setImage(ImageBean.getImageString());
+				
+				// AGREGADO DESPUES DE DIEGO
 				PostBean.add(pb);
+
 			}
 
 		} catch (SQLException e) {
