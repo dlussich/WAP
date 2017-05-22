@@ -106,7 +106,10 @@ header h3+p {
 
 /* Form */
 form {
-	margin: 0 0 2em 0;
+	margin-top:0;
+	margin-right:150px;
+	margin-bottom:150px;
+	margin-left: 150px;
 }
 
 label {
