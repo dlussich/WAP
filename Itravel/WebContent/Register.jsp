@@ -7,9 +7,11 @@
 <link rel="stylesheet" href="css/main.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
+<script src="JS/checkUser.js" type="text/javascript"></script>
 <title>Sign up</title>
 </head>
 <body class="landing">
+
 	<!-- Page Wrapper -->
 	<div id="page-wrapper">
 		<!-- Header -->
@@ -50,7 +52,7 @@
 							<option>select gender</option>
 							<option value="M">Male</option>
 							<option value="F">Female</option>
-					</select></td>
+					</select></td><td></td>
 				</tr>
 				<tr>
 					<td>State</td>
@@ -111,55 +113,56 @@
 				</tr>
 				<tr>
 					<td>City</td>
-					<td><input type="text" name="city" /></td>
+					<td><input type="text" name="city" /></td><td></td>
 				</tr>
 				<tr>
 					<td>Street</td>
-					<td><input type="text" name="street" /></td>
+					<td><input type="text" name="street" /></td><td></td>
 				</tr>
 				<tr>
 					<td>Zip Code</td>
 					<td><input type="text" pattern="^\d{5}$"
-						title="Please input five integer US zip code" name="zipcode" /></td>
+						title="Please input five integer US zip code" name="zipcode" /></td><td></td>
 				</tr>
 				<tr>
 					<td>Birth Year</td>
 					<td><input type="text" pattern="^(19|20)\d{2}$"
-						title="Please input correct four digits year" name="birthyear" /></td>
+						title="Please input correct four digits year" name="birthyear" /></td><td></td>
 				</tr>
 				<tr>
 					<td>Email</td>
 					<td><input type="text"
 						pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-						title="Please input correct email address" name="email" /></td>
+						title="Please input correct email address" name="email" required /></td><td></td>
 				</tr>
 				<tr>
 					<td>User Name</td>
-					<td><input type="text" name="username" required /></td>
+					<td><input type="text" name="username" id="username" required /></td><td id="user_name_check"></td>
 				</tr>
 				<tr>
 					<td>Password</td>
 					<td><input type="password"
 						pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$"
 						title="Password should be at least 6 letters and must include at least one upper case letter, one lower case letter, and one numeric digit."
-						name="password" required /></td>
+						name="password" id="password" required /></td><td></td>
 				</tr>
 				<tr>
 					<td>Confirm Password</td>
-					<td><input type="password" name="conpassword" required /></td>
+					<td><input type="password" name="conpassword" id="conpassword" required /></td><td id="ismatch"></td>
 				</tr>
 				<tr>
 					<td><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Register"></input><input
+					<td><input type="submit" value="Register" id="register"></input><input
 						type="reset" value="Reset"></input></td>
 				</tr>
 			</table>
 		</form>
 		</section>
 	</div>
+	
 
 	<!-- Scripts -->
 </body>
