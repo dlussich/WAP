@@ -2,9 +2,18 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>Itravel</display-name>
   <welcome-file-list>
-    <welcome-file>Index.jsp</welcome-file>
+    <welcome-file>SignIn.jsp</welcome-file>
   </welcome-file-list>
   <listener>
     <listener-class>com.listener.MyServletContextListener</listener-class>
   </listener>
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>com.filter.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
 </web-app>

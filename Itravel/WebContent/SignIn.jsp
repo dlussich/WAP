@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
-<title>Insert title here</title>
+<title>Itravel</title>
 </head>
 <body class="landing">
 	<!-- Page Wrapper -->
@@ -24,6 +24,7 @@
 						<li><a href="elements.html">Check Weather</a></li>
 						<li><a href="Register.jsp">Sign Up</a></li>
 						<li><a href="SignIn.jsp">Sign In</a></li>
+						<li><a href="SignoutServlet">Sign Out</a></li>
 					</ul>
 				</div></li>
 		</ul>

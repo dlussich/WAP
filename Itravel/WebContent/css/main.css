@@ -57,6 +57,14 @@ p {
 	margin: 0 0 2em 0;
 }
 
+.user{
+	color: #fff;
+	font-weight: 100;
+	letter-spacing: 0.225em;
+	line-height: 1em;
+	margin: 0 0 1em 0;
+	text-transform: uppercase;
+}
 h1, h2, h3, h4 {
 	color: #fff;
 	font-weight: 800;
@@ -616,7 +624,7 @@ body.is-menu-visible #menu {
 	text-align: center;
 }
 
-#banner h2 {
+#banner h2, .user {
 	transform: scale(1);
 	transition: transform 0.5s ease, opacity 0.5s ease;
 	display: inline-block;
@@ -627,7 +635,7 @@ body.is-menu-visible #menu {
 	z-index: 1;
 }
 
-#banner h2:before, #banner h2:after {
+#banner h2:before, #banner h2:after, .user:after,.user:before {
 	transition: width 0.85s ease;
 	transition-delay: 0.25s;
 	background: #fff;
@@ -638,12 +646,12 @@ body.is-menu-visible #menu {
 	width: 100%;
 }
 
-#banner h2:before {
+#banner h2:before, .user {
 	top: 0;
 	left: 0;
 }
 
-#banner h2:after {
+#banner h2:after,.user {
 	bottom: 0;
 	right: 0;
 }

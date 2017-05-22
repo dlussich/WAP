@@ -40,6 +40,7 @@
 								<li><a href="elements.html">Check Weather</a></li>
 								<li><a href="Register.jsp">Sign Up</a></li>
 								<li><a href="SignIn.jsp">Sign In</a></li>
+								<li><a href="SignoutServlet">Sign Out</a></li>
 							</ul>
 						</div></li>
 				</ul>
@@ -56,6 +57,7 @@
 					Yi Cai<br /> 
 					Diego Lussich<br /></h3> 
 				</p>
+				<p class="user" >Welcome: ${user.userName}</p>
 				<ul class="actions">
 					<li><a href="Post.jsp" class="button special">PUBLISH</a></li>
 				</ul>
