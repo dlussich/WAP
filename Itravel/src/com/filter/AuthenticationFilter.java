@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bean.RegisterBean;
+import com.dao.PostDao;
 
 /**
  * Servlet Filter implementation class AuthenticationFilter
@@ -57,6 +58,8 @@ public class AuthenticationFilter implements Filter {
 			res.sendRedirect("SignIn.jsp");
 		} else {
 			// pass the request along the filter chain
+			PostDao PostDao = new PostDao();
+			request.getServletContext().setAttribute("listreq", PostDao.listAllPost());
 			chain.doFilter(request, response);
 		}
 
