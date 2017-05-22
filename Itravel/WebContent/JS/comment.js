@@ -58,6 +58,7 @@ function flistcommet(id_post) {
 								'<td>' + value.date_comment + '</td>',
 								'</tr>');
 					});
+					$("#DZ" + id_post).append('</br>');
 				} else {
 					alert("Error with the like!!");
 				}
