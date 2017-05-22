@@ -19,7 +19,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
 <script src="JS/like.js" type="text/javascript"></script>
-
+<script src="JS/location.js" type="text/javascript"></script>
 <title>ITRAVEL WAP</title>
 </head>
 <!--<body class="landing is-mobile is-menu-visible">-->
@@ -76,10 +76,11 @@
    					<img src="${mypost.image}" alt="" />
 					</c:if>
 					</div>
-					<div class="content">
+					<div class="content" id ="CON${mypost.post}">
 						<h1>#${mypost.post}</h1>
 						<h2>Publication Date: ${mypost.date_post}</h2>
-						<h3>${mypost.state} - ${mypost.city}</h3>
+						<h4>${mypost.state}</h4>
+						<h3 id="S${mypost.post}">${mypost.city}</h3>
 						<h3>Zip Code:${mypost.zip_code}</h3>
 						<p>${mypost.text}</p>
 						<p>
