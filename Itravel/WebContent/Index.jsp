@@ -20,6 +20,7 @@
 <script src="JS/main.js" type="text/javascript"></script>
 <script src="JS/like.js" type="text/javascript"></script>
 <script src="JS/location.js" type="text/javascript"></script>
+<script src="JS/comment.js" type="text/javascript"></script>
 <title>ITRAVEL WAP</title>
 </head>
 <!--<body class="landing is-mobile is-menu-visible">-->
@@ -60,9 +61,10 @@
 				<p class="user" >Welcome: ${user.userName}</p>
 				<ul class="actions">
 					<li><a href="Post.jsp" class="button special">PUBLISH</a></li>
+					<li><a href="#two" class="more scrolly"></a></li>
 				</ul>
 			</div>
-			<a href="#two" class="more scrolly">Learn More</a>
+
 		</section>
 
 		<!-- POST -->

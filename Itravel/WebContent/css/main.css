@@ -104,6 +104,15 @@ header h3+p {
 	font-size: 1.1em;
 }
 
+th, td {
+    padding: 15px;
+}
+
+.comment table, .comment  th, .comment td {
+ border: 1px solid #dddddd;
+}
+
+
 /* Form */
 form {
 	margin-top:0;
@@ -151,6 +160,10 @@ input[type="text"], input[type="password"], input[type="email"], select
 
 textarea {
 	padding: 0.75em 1em;
+}
+
+textarea .comment {
+	padding: 10px;
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -327,6 +340,11 @@ input[type="submit"], input[type="reset"], input[type="button"], button,
 	text-overflow: ellipsis;
 }
 
+input[type="submit"].botton_comment{
+	border: 2px solid green;
+	border-radius: 20px;
+}
+
 input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover,
 	button:hover, .button:hover {
 	background-color: rgba(144, 144, 144, 0.25);
@@ -499,6 +517,11 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 	#menu {
 		padding: 3em 1.5em;
 	}
+}
+
+div.close_div{
+	text-align: right;
+vertical-align: right;
 }
 
 #menu .close {
@@ -679,7 +702,7 @@ body.is-menu-visible #menu {
 	height: 8.5em;
 	left: 50%;
 	letter-spacing: 0.225em;
-	margin-left: -8.5em;
+	margin-left: -6.8em;
 	opacity: 1;
 	outline: 0;
 	padding-left: 0.225em;
