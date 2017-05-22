@@ -1,17 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/main.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
-<script src="JS/post.js" type="text/javascript"></script>
-
-<title>CREATE POST</title>
+<title>Insert title here</title>
 </head>
-<!--<body class="landing is-mobile is-menu-visible">-->
 <body class="landing">
 	<!-- Page Wrapper -->
 	<div id="page-wrapper">
@@ -30,43 +27,25 @@
 					</ul>
 				</div></li>
 		</ul>
-		</nav> </header>
+		</nav> </header>	
 		<!-- One -->
 		<section id="one" class="wrapper style1 special">
 		<div class="inner">
 			<header>
-			<h2>Create Post:</h2>
+			<h2>Log in:</h2>
 			</header>
 		</div>
 		</section>
-		<section>
-		<form action="PostServlet" method="post" enctype="multipart/form-data">
-			Tell us about your travel:
-			<textarea rows="5" cols="10" name="text_post" required="required"></textarea>
-			<br />
-			State:
-			<select id="states" name="state">
-					<option>Select State</option>
-				</select>
-			<br />
-			City:<input type="text" name="city"
-				required="required" />
-			<br /> 
-			Street:<input type="text" name="street"
-				required="required" />
-			<br /> 
-			Zip Code:<input
-				type="text" name="zip_code" pattern="[0-9]{5}"
-				title="Five digit zip code" required="required" />
-			<br /> 
-			<input
-				type="file" name="image" /><br /> <br /> <input type="submit" />
-		</form>
-		</section>
-	</div>
-
-	<!-- Scripts -->
-
-
+<section>
+	<form action="SignInServlet" method="POST">
+			User Name: <input type="text" name="user_name" required /> <br />
+			Password: <input type="password"
+				pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$"
+				title="Password should be at least 6 letters and must include at least one upper case letter, one lower case letter, and one numeric digit."
+				name="password" required /> <br /> 	
+		<input type="submit" value="Submit" />
+		<div>${errMessage}</div>
+	</form>
+</section>
 </body>
 </html>

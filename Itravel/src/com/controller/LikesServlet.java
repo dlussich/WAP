@@ -57,8 +57,7 @@ public class LikesServlet extends HttpServlet {
 		PostBean.setPost(id_post);
 		PostDao PostDao = new PostDao();
 
-		// The core Logic of the Registration application is present here. We
-		// are going to insert user data in to the database.
+		// The core Logic of the Registration application is present here. 
 		int PostLikes = PostDao.Selectlikes(PostBean);
 		//System.out.println("PostLikes  "+PostLikes);
 		

@@ -16,8 +16,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/main.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
 <script src="JS/like.js" type="text/javascript"></script>
 
@@ -39,8 +38,8 @@
 								<li><a href="Post.jsp">Publish Post</a></li>
 								<li><a href="elements.html">Delete Post</a></li>
 								<li><a href="elements.html">Check Weather</a></li>
-								<li><a href="#">Sign Up</a></li>
-								<li><a href="#">Log In</a></li>
+								<li><a href="Register.jsp">Sign Up</a></li>
+								<li><a href="SignIn.jsp">Sign In</a></li>
 							</ul>
 						</div></li>
 				</ul>
@@ -51,8 +50,11 @@
 			<div class="inner">
 				<h2>ITRAVEL</h2>
 				<p>
-					PROJECT FOR WAP<br /> Create by:<br /> Gloria Gallego<br /> Yi
-					Cai<br /> Diego Lussich<br />
+					WAP FINAL PROJECT</h3> 
+					<h3>Created by:<br /> 
+					Gloria Gallego<br /> 
+					Yi Cai<br /> 
+					Diego Lussich<br /></h3> 
 				</p>
 				<ul class="actions">
 					<li><a href="Post.jsp" class="button special">PUBLISH</a></li>

@@ -62,14 +62,19 @@ public class RegisterServlet extends HttpServlet {
 
 		// The core Logic of the Registration application is present here. We
 		// are going to insert user data in to the database.
-		String userRegistered = registerDao.registerUser(registerBean);
+		int userRegistered = registerDao.registerUser(registerBean);
 
-		if (userRegistered.equals("SUCCESS")) // On success, you can display a
+		if (userRegistered!=-1) // On success, you can display a
 												// message to user on Home page
 		{
+			registerBean.setId_user(userRegistered);
+			System.out.println("user in the register "+ userRegistered);
 			// set session as "user"
+			
 			request.getSession().setAttribute("user", registerBean);
-			request.getRequestDispatcher("/Home.jsp").forward(request, response);
+			
+			response.sendRedirect("Index.jsp");
+			
 		} else // On Failure, display a meaningful message to the User.
 		{
 			request.setAttribute("errMessage", userRegistered);
