@@ -16,7 +16,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/main.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxM39UmYCSuurpCoINutq9Q2kec--RuF0"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
 <script src="JS/like.js" type="text/javascript"></script>
 <script src="JS/location.js" type="text/javascript"></script>
@@ -98,7 +99,8 @@
 				</div>
 			</section>
 		</mytag:simple>
-			<!-- Footer --><foo ter id="footer">
+			<!-- Footer -->
+			<footer id="footer">
 				<ul class="copyright">
 					<li>&copy; MUM</li>
 					<li>Design: GROUP TEAM</li>
