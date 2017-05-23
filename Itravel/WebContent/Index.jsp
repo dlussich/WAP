@@ -7,17 +7,22 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="sun.misc.BASE64Encoder"%>
+<%@page import="com.enums.State"%>
+<%@ taglib prefix='mytag' uri='/WEB-INF/tlds/loop'%>
+<%@ page import="java.util.*, com.customertag.* ,com.bean.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/main.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxM39UmYCSuurpCoINutq9Q2kec--RuF0"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
 <script src="JS/like.js" type="text/javascript"></script>
-
+<script src="JS/location.js" type="text/javascript"></script>
+<script src="JS/comment.js" type="text/javascript"></script>
+<script src="JS/weather.js" type="text/javascript"></script>
 <title>ITRAVEL WAP</title>
 </head>
 <!--<body class="landing is-mobile is-menu-visible">-->
@@ -35,80 +40,77 @@
 								<li><a href="Index.jsp">Home</a></li>
 								<li><a href="Post.jsp">Publish Post</a></li>
 								<li><a href="elements.html">Delete Post</a></li>
-								<li><a href="elements.html">Check Weather</a></li>
-								<li><a href="#">Sign Up</a></li>
-								<li><a href="#">Log In</a></li>
+								<li><a href="Weather.html">Check Weather</a></li>
+								<li><a href="Register.jsp">Sign Up</a></li>
+								<c:if test="${sessionScope == null }"><li><a href="SignIn.jsp">Sign In</a></li></c:if>
+								<li><a href="updateUser.jsp">Update Profile</a></li>
+								<li><a href="SignoutServlet">Sign Out</a></li>
 							</ul>
 						</div></li>
 				</ul>
 			</nav>
 		</header>
 		<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<h2>ITRAVEL</h2>
-							<p>PROJECT FOR WAP<br />
-							Create by:<br /> 
-							Gloria Gallego<br />
-							Yi Cai<br />
-							Diego Lussich<br />
-							</p>
-							<ul class="actions">
-								<li><a href="Register.jsp" class="button special">REGISTER</a></li>
-							</ul>
-						</div>
-						<a href="#two" class="more scrolly">Learn More</a>
-					</section>
-		
+		<section id="banner">
+			<div class="inner">
+				<h2>ITRAVEL</h2>
+				<p>
+					WAP FINAL PROJECT</h3> 
+					<h3>Created by:<br /> 
+					Gloria Gallego<br /> 
+					Yi Cai<br /> 
+					Diego Lussich<br /></h3> 
+				</p>
+				<p class="user" >Welcome: ${user.userName}</p>
+				<ul class="actions">
+					<li><a href="Post.jsp" class="button special">PUBLISH</a></li>
+					<li><a href="#two" class="more scrolly"></a></li>
+				</ul>
+			</div>
+
+		</section>
+
 		<!-- POST -->
 		<section id="two" class="wrapper alt style2">
-			<!-- Blog entries -->
-				<%
-			PostDao PostDao = new PostDao(); //not recommended.Pass this object from servlet
-			ImageDao ImageDao = new ImageDao();
-			String img = "";
-			ImageBean ImageBean;
-			int id;
 
-			List<PostBean> list = PostDao.listAllPost();
-			for (PostBean c : list) {
-				// The core Logic of the Registration application is present here. We
-				// are going to insert user data in to the database.
-				id = Integer.valueOf(c.getPost());
-				ImageBean = ImageDao.GetImage(id);
-				img = ImageBean.getImageString();
-		%>
-			<section class="spotlight">
-				<div class="image">
-					<img  src="<%=img%>" alt="" />
-				</div>
-				<div class="content">
-					<h1><%=c.getPost()%></h1>
-					<h2><%=c.getDate_post()%></h2>
-					<h3><%=c.getLocation()%></h3>
-					<p><%=c.getText()%></p>
-					<p>
-						<ul class="icons">
-							<li><a href="" class="icon fa-like"><span class="label"></span></a></li>
-							<li><a href="" class="icon fa-comment"><span class="label"></span></a></li>
-							<li><a href="" class="icon fa-location"><span class="label"></span></a></li>
-	
-						</ul>			
+			<!-- Blog entries -->
+			<mytag:simple postList="${listreq}">
+				<section class="spotlight">
+					<div class="image">
+					<c:if test="${not empty mypost.image}">
+   					<img src="${mypost.image}" alt="" />
+					</c:if>
+					</div>
+					<div class="content" id ="CON${mypost.post}">
+						<h1>#${mypost.post}</h1>
+						<h2>Publication Date: ${mypost.date_post}</h2>
+						<h4>${mypost.state}</h4>
+						<h3 id="S${mypost.post}">${mypost.city}</h3>
+						<h3>Zip Code:${mypost.zip_code}</h3>
+						<p>${mypost.text}</p>
+						<p>
+							<ul class="icons">
+						<li><span id="L${mypost.post}">${mypost.likes}</span><a
+								id="A${mypost.post}" class="icon fa-like"><span
+									class="label"></span></a></li>
+						<li><a id="B${mypost.post}" class="icon fa-comment"><span
+									class="label"></span></a></li>
+						<li><a id="C${mypost.post}" class="icon fa-location"><span
+									class="label"></span></a></li>
+
+					</ul>
 					</p>
 				</div>
 			</section>
-			<%
-				}
-			%>
-
-		<!-- Footer -->
-		<footer id="footer">
-			<ul class="copyright">
-				<li>&copy; MUM</li>
-				<li>Design: GROUP TEAM</li>
-			</ul>
-		</footer>
-
+		</mytag:simple>
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="copyright">
+					<li>&copy; MUM</li>
+					<li>Design: GROUP TEAM</li>
+				</ul>
+			</footer>
+	
 	</div>
 
 	<!-- Scripts -->

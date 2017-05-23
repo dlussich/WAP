@@ -8,13 +8,17 @@ public class PostBean {
 	private Date date_post;
 	private String text; 
 	private int user;
-	private String location;
+	private int likes;
+	private String state;
+	private String city;
+	private int zip_code;
+	private String image; // AGREGADO DESPUES DE DIEGO
 	
-	public String getLocation() {
-		return location;
+	public String getImage() { // AGREGADO DESPUES DE DIEGO
+		return image;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setImage(String image) {// AGREGADO DESPUES DE DIEGO
+		this.image = image;
 	}
 	public int getPost() {
 		return post;
@@ -40,6 +44,31 @@ public class PostBean {
 	public void setUser(int user) {
 		this.user = user;
 	}
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public int getZip_code() {
+		return zip_code;
+	}
+	public void setZip_code(int zip_code) {
+		this.zip_code = zip_code;
+	}
+	
 	
 	
 }

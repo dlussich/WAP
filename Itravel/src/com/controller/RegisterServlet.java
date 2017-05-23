@@ -33,6 +33,12 @@ public class RegisterServlet extends HttpServlet {
 
 		// Copying all the input parameters in to local variables
 		String fullName = request.getParameter("fullname");
+		String gender = request.getParameter("gender");
+		String state = request.getParameter("state");
+		String city = request.getParameter("city");
+		String street = request.getParameter("street");
+		String zipCode = request.getParameter("zipcode");
+		String birthYear = request.getParameter("birthyear");
 		String email = request.getParameter("email");
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -40,6 +46,12 @@ public class RegisterServlet extends HttpServlet {
 		RegisterBean registerBean = new RegisterBean();
 		// Using Java Beans - An easiest way to play with group of related data
 		registerBean.setFullName(fullName);
+		registerBean.setGender(gender);
+		registerBean.setState(state);
+		registerBean.setCity(city);
+		registerBean.setStreet(street);
+		registerBean.setZipCode(zipCode);
+		registerBean.setBirthYear(birthYear);
 		registerBean.setEmail(email);
 		registerBean.setUserName(userName);
 		registerBean.setPassword(password);
@@ -50,12 +62,19 @@ public class RegisterServlet extends HttpServlet {
 
 		// The core Logic of the Registration application is present here. We
 		// are going to insert user data in to the database.
-		String userRegistered = registerDao.registerUser(registerBean);
+		int userRegistered = registerDao.registerUser(registerBean);
 
-		if (userRegistered.equals("SUCCESS")) // On success, you can display a
+		if (userRegistered!=-1) // On success, you can display a
 												// message to user on Home page
 		{
-			request.getRequestDispatcher("/Home.jsp").forward(request, response);
+			registerBean.setId_user(userRegistered);
+			System.out.println("user in the register "+ userRegistered);
+			// set session as "user"
+			
+			request.getSession().setAttribute("user", registerBean);
+			
+			response.sendRedirect("Index.jsp");
+			
 		} else // On Failure, display a meaningful message to the User.
 		{
 			request.setAttribute("errMessage", userRegistered);
