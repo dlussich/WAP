@@ -22,6 +22,7 @@
 <script src="JS/like.js" type="text/javascript"></script>
 <script src="JS/location.js" type="text/javascript"></script>
 <script src="JS/comment.js" type="text/javascript"></script>
+<script src="JS/weather.js" type="text/javascript"></script>
 <title>ITRAVEL WAP</title>
 </head>
 <!--<body class="landing is-mobile is-menu-visible">-->
@@ -39,7 +40,7 @@
 								<li><a href="Index.jsp">Home</a></li>
 								<li><a href="Post.jsp">Publish Post</a></li>
 								<li><a href="elements.html">Delete Post</a></li>
-								<li><a href="elements.html">Check Weather</a></li>
+								<li><a href="Weather.html">Check Weather</a></li>
 								<li><a href="Register.jsp">Sign Up</a></li>
 								<li><a href="SignIn.jsp">Sign In</a></li>
 								<li><a href="SignoutServlet">Sign Out</a></li>

@@ -12,12 +12,10 @@ function flocation(event){
 	var val= $(this).attr('id');
 	var id_post= val.substring(1, val.length);
 	var content= "#DC"+id_post;
-	console.log(content);
 	$(content).remove();
 	var city= "#S"+id_post;
 	var initialLatLong=null;
 	var location= $(city).text();
-	console.log(location);
 	$.get("http://api.openweathermap.org/data/2.5/weather",{
 		"q":location,
 		"APPID": "2cbac0d6282afa096674267c64a8af5c"
@@ -40,7 +38,7 @@ function flocation(event){
 				+ '<label>Pressure: ' + pressure+'</label></p>';
 		var content= "#CON"+id_post;
 		$(content).append('<div id="DC'+ id_post+'">'
-		+'<a href="#menu" id="BC'+ id_post+'">X</a><div id="mapContainer"><div id="map"></div>'
+		+'<div class="close_div">Close<a href="#menu" id="BC'+ id_post+'">X</a></div><div id="mapContainer"><div id="map"></div>'
 		+'<div id="weather"></div></div></div>');
 		$("#weather").append('<img id="forecastImg" alt=""/>'+text);
 		$('img#forecastImg').attr("src","http://openweathermap.org/img/w/"+ icon + ".png")
@@ -72,15 +70,6 @@ function flocation(event){
 	}).fail(function(){
 		console.log("Couldn't find data for location: "+location )
 	});
-
-
-//	var content= "#DC"+id_post;
-//	$(content).remove();
-//	var city= "#S"+id_post;
-//	var map = $(city).text();
-//	var content= "#CON"+id_post;
-//	$(content).append('<iframe  id=DC'+ id_post+'>'+'</iframe>');
-//	$('#BC'+id_post).click(fmaps);
 
 }
 
