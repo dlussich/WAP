@@ -3,11 +3,9 @@
  */
 
 $(document).ready(function() {
+	$("#currentpassword").focusout(checkCurrentPassword);
 	$("#username").focusout(checkUser);
 	$("#conpassword").keyup(confirmPassword);
-	$("#register").click(function(event){
-		
-	});
 });
 
 
@@ -21,7 +19,7 @@ function checkUser(event){
 			}
 		}).done(function(response) {
 			if(response == -1) {
-				$("td#user_name_check").text("User name already exist");
+				$("td#user_name_check").text("User name already exist.");
 			} else {
 				$("td#user_name_check").text("User name is ok!!");
 			}
@@ -41,9 +39,19 @@ function confirmPassword(event){
 	 if(conpassword == password) {
 	 	$("#ismatch").text("");
 	 } else {
-	 	$("#ismatch").text("Passwords have to be the same");
+	 	$("#ismatch").text("Passwords have to be the same.");
 	 }
 	 
+}
+
+function checkCurrentPassword(){
+		var currentPass = $("#currentpass").val();
+		var inputPass = $("#currentpassword").val();	
+		if (inputPass != currentPass) {
+			$("#iscurrentpassmatch").text("Current password is wrong.");
+		} else {
+			$("#iscurrentpassmatch").text("Current password is ok.");
+		}
 }
 
 
