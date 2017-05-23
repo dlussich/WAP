@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,8 +8,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
 <script src="JS/checkUser.js" type="text/javascript"></script>
-<title>Sign up</title>
+<title>Update Profile</title>
 </head>
+<script type="text/javascript">
+	$(function(){
+		$("select[name='gender']").val('${sessionScope.user.gender}');
+		$("select[name='state']").val('${sessionScope.user.state}');
+
+	})
+
+</script>
 <body class="landing">
 
 	<!-- Page Wrapper -->
@@ -35,16 +43,20 @@
 		<section id="one" class="wrapper style1 special">
 		<div class="inner">
 			<header>
-			<h2>Sign Up:</h2>
+			<h2>Update Profile:</h2>
 			</header>
 		</div>
 		</section>
 		<section>
-		<form name="form1" action="RegisterServlet" method="post">
+		<form name="form1" action="UpdateUserServlet" method="post">
 			<table align="center">
+				
 				<tr>
 					<td>Full Name</td>
-					<td><input type="text" name="fullname" required /></td>
+					<td>
+					<input type="hidden" name="user_id" value="${sessionScope.user.id_user }" />
+					<input type="hidden" id="currentpass" value="${sessionScope.user.password }" />
+					<input type="text" name="fullname" required value="${sessionScope.user.fullName}" /></td>
 				</tr>
 				<tr>
 					<td>Gender</td>
@@ -113,34 +125,39 @@
 				</tr>
 				<tr>
 					<td>City</td>
-					<td><input type="text" name="city" /></td><td></td>
+					<td><input type="text" name="city" value="${sessionScope.user.city }" /></td><td></td>
 				</tr>
 				<tr>
 					<td>Street</td>
-					<td><input type="text" name="street" /></td><td></td>
+					<td><input type="text" name="street" value="${sessionScope.user.street }" /></td><td></td>
 				</tr>
 				<tr>
 					<td>Zip Code</td>
 					<td><input type="text" pattern="^\d{5}$"
-						title="Please input five integer US zip code" name="zipcode" /></td><td></td>
+						title="Please input five integer US zip code" name="zipcode" value="${sessionScope.user.zipCode }"/></td><td></td>
 				</tr>
 				<tr>
 					<td>Birth Year</td>
 					<td><input type="text" pattern="^(19|20)\d{2}$"
-						title="Please input correct four digits year" name="birthyear" /></td><td></td>
+						title="Please input correct four digits year" name="birthyear" value="${sessionScope.user.birthYear }"/></td><td></td>
 				</tr>
 				<tr>
 					<td>Email</td>
 					<td><input type="text"
 						pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-						title="Please input correct email address" name="email" required /></td><td></td>
+						title="Please input correct email address" name="email" required value="${sessionScope.user.email }"/></td><td></td>
 				</tr>
 				<tr>
 					<td>User Name</td>
-					<td><input type="text" name="username" id="username" required /></td><td id="user_name_check"></td>
+					<td><input type="text" name="username" id="username" required value="${sessionScope.user.userName }" disabled/></td><td id="user_name_check">Cannot change User Name.</td>
 				</tr>
 				<tr>
-					<td>Password</td>
+					<td>Current Password</td>
+					<td><input type="password"
+						name="currentpassword" id="currentpassword" required /></td><td id="iscurrentpassmatch"></td>
+				</tr>
+				<tr>
+					<td>New Password</td>
 					<td><input type="password"
 						pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$"
 						title="Password should be at least 6 letters and must include at least one upper case letter, one lower case letter, and one numeric digit."
@@ -155,7 +172,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Register"></input><input
+					<td><input type="submit" value="Update"></input><input
 						type="reset" value="Reset"></input></td>
 				</tr>
 			</table>

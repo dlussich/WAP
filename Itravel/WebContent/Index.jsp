@@ -42,7 +42,8 @@
 								<li><a href="elements.html">Delete Post</a></li>
 								<li><a href="Weather.html">Check Weather</a></li>
 								<li><a href="Register.jsp">Sign Up</a></li>
-								<li><a href="SignIn.jsp">Sign In</a></li>
+								<c:if test="${sessionScope == null }"><li><a href="SignIn.jsp">Sign In</a></li></c:if>
+								<li><a href="updateUser.jsp">Update Profile</a></li>
 								<li><a href="SignoutServlet">Sign Out</a></li>
 							</ul>
 						</div></li>

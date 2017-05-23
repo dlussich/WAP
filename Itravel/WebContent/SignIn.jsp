@@ -33,7 +33,7 @@
 		<section id="one" class="wrapper style1 special">
 		<div class="inner">
 			<header>
-			<h2>Log in:</h2>
+			<h2>Sign in:</h2>
 			</header>
 		</div>
 		</section>

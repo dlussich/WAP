@@ -74,6 +74,60 @@ public class RegisterDao {
 		return id_user; // On failure, send a
 						// message from here.
 	}
+	
+	public int updateUser(RegisterBean registerBean) {
+		
+		int res = -1;
+		int id_user = registerBean.getId_user();
+
+		String fullName = registerBean.getFullName();
+		String email = registerBean.getEmail();
+		String password = registerBean.getPassword();
+		String gender = registerBean.getGender();
+		String state = registerBean.getState();
+		String city = registerBean.getCity();
+		String street = registerBean.getStreet();
+		String zipCode = registerBean.getZipCode();
+		String birthYear = registerBean.getBirthYear();
+
+		PreparedStatement preparedStatement = null;
+
+		// we close the connection with the data base in the LISTENER
+		try {
+			Connection con = DBConnection.getConexion();
+			String query = "update t_users set fullname=?, email=?, password=? ,Gender=? ,State=?, City=?, Street=?, Zip_Code=?, Birth_Year=? where idt_users=?" ; // 
+			// user
+			// details
+			// into
+			// the
+			// table
+			// 'USERS'
+			preparedStatement = con.prepareStatement(query); // Making use of
+																// prepared
+																// statements
+																// here to
+																// insert bunch
+																// of data
+			preparedStatement.setString(1, fullName);
+			preparedStatement.setString(2, email);
+			preparedStatement.setString(3, password);
+			preparedStatement.setString(4, gender);
+			preparedStatement.setString(5, state);
+			preparedStatement.setString(6, city);
+			preparedStatement.setString(7, street);
+			preparedStatement.setString(8, zipCode);
+			preparedStatement.setString(9, birthYear);
+			preparedStatement.setInt(10, id_user);
+
+			res = preparedStatement.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res; // On failure, send a
+						// message from here.
+	}
 
 	public RegisterBean CheckUser(String username) {
 		RegisterBean RegisterBean_DB= new RegisterBean();
