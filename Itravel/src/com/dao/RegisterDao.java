@@ -103,7 +103,7 @@ public class RegisterDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return RegisterBean_DB; // On failure, send -1
+		return RegisterBean_DB; // On failure, send null
 	}
 
 }

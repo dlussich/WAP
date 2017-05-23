@@ -52,7 +52,7 @@ public class AuthenticationFilter implements Filter {
 			user = (RegisterBean) session.getAttribute("user");
 		}
 		System.out.println("user in filter "+user);
-		if (user==null && !(uri.contains("JS") ||uri.contains("css") ||uri.endsWith("SignIn.jsp")||uri.endsWith("SignInServlet")||uri.endsWith("Register.jsp")||uri.endsWith("RegisterServlet"))) {
+		if (user==null && !(uri.contains("JS") ||uri.contains("css") ||uri.endsWith("SignIn.jsp")||uri.endsWith("SignInServlet")||uri.endsWith("Register.jsp")||uri.endsWith("RegisterServlet")||uri.endsWith("CheckUserServlet"))) {
 			this.context.log("Unauthorized access request");
 			System.out.println("Unauthorized access request");
 			res.sendRedirect("SignIn.jsp");
