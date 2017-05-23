@@ -437,13 +437,13 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 #map{
 	width:500px;
 	height:400px;
-	flaot:left;
+	float:left;
 }
 #weather{
+	position:relative;
     width:200px;
 	height:400px;
 	float: left;
-	margin:0;
 	border:solid 2px black;
 	background-color: #65A9F6;
 }

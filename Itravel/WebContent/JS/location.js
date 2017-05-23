@@ -32,22 +32,23 @@ function flocation(event){
 		let main= weather.main;
 		let pressure = data.main.pressure;
 		let description= weather.description;
-		let text = "<p><b>" + location + '</b><label class="label">' 
-				+ main + ':</label><span>' + description +'</span>'
-				+ '<label class="label">Humidity:</label><span>' + humidity + '</span>' 
-				+ '<label class="label">Min Temp:</label><span>' + tempMin +' '+grades +'</span>' 
-				+ '<label class="label">Max Temp:</label><span>' + tempMax +' '+grades +'</span>'
-				+ '<label class="label">Pressure:</label><span>' + pressure+'</span></p>';
+		let text = "<p><br/><b>" + location + '</b><br/><br/><label>' 
+				+ main + ': ' + description +'</label>'
+				+ '<label>Humidity: ' + humidity + '</label>' 
+				+ '<label>Min Temp: ' + tempMin +' '+grades +'</label>' 
+				+ '<label>Max Temp: ' + tempMax +' '+grades +'</label>'
+				+ '<label>Pressure: ' + pressure+'</label></p>';
 		var content= "#CON"+id_post;
-		$(content).append('<div id="DC'+ id_post+'"><a href="#menu" id="BC'+ id_post+'">X</a>'
-		+'<div id="map"></div><div id="weather"></div></div>');
+		$(content).append('<div id="DC'+ id_post+'">'
+		+'<a href="#menu" id="BC'+ id_post+'">X</a><div id="map"></div>'
+		+'<div id="weather"></div></div>');
 		$("#weather").append('<img id="forecastImg" alt=""/><br/>'+text);
 		$('img#forecastImg').attr("src","http://openweathermap.org/img/w/"+ icon + ".png")
 							.css({"width":"100px",
 							"height":"100px",
 							"padding":"0",
 							"background-color":"white",
-							"margin":"0 48px 0 48px",
+							"margin":"10px 48px 48px 48px",
 							"border":"none",
 							"border-radius":"50%"});
 		var initialLatLong = new google.maps.LatLng(data.coord.lat,data.coord.lon);
@@ -58,7 +59,7 @@ function flocation(event){
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		var map = new google.maps.Map(document.getElementById("map"), myOptions);
-
+		
 		var marker = new google.maps.Marker({
 			position: initialLatLong,
 			map: map,
