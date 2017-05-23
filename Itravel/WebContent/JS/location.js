@@ -32,7 +32,7 @@ function flocation(event){
 		let main= weather.main;
 		let pressure = data.main.pressure;
 		let description= weather.description;
-		let text = "<p><br/><b>" + location + '</b><br/><br/><label>' 
+		let text = "<h4 class='center'>" + location + '</h4><p><label>' 
 				+ main + ': ' + description +'</label>'
 				+ '<label>Humidity: ' + humidity + '</label>' 
 				+ '<label>Min Temp: ' + tempMin +' '+grades +'</label>' 
@@ -40,15 +40,15 @@ function flocation(event){
 				+ '<label>Pressure: ' + pressure+'</label></p>';
 		var content= "#CON"+id_post;
 		$(content).append('<div id="DC'+ id_post+'">'
-		+'<a href="#menu" id="BC'+ id_post+'">X</a><div id="map"></div>'
-		+'<div id="weather"></div></div>');
-		$("#weather").append('<img id="forecastImg" alt=""/><br/>'+text);
+		+'<a href="#menu" id="BC'+ id_post+'">X</a><div id="mapContainer"><div id="map"></div>'
+		+'<div id="weather"></div></div></div>');
+		$("#weather").append('<img id="forecastImg" alt=""/>'+text);
 		$('img#forecastImg').attr("src","http://openweathermap.org/img/w/"+ icon + ".png")
 							.css({"width":"100px",
 							"height":"100px",
 							"padding":"0",
 							"background-color":"white",
-							"margin":"10px 48px 48px 48px",
+							"margin":"10px 48px 30px 48px",
 							"border":"none",
 							"border-radius":"50%"});
 		var initialLatLong = new google.maps.LatLng(data.coord.lat,data.coord.lon);
@@ -56,6 +56,7 @@ function flocation(event){
 		var myOptions = {
 				zoom: 12,
 				center: initialLatLong,
+				draggable:false,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		var map = new google.maps.Map(document.getElementById("map"), myOptions);
@@ -63,6 +64,7 @@ function flocation(event){
 		var marker = new google.maps.Marker({
 			position: initialLatLong,
 			map: map,
+			draggable:false,
 			title: location
 		});
 		
