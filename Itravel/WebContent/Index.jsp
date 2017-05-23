@@ -16,11 +16,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/main.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxM39UmYCSuurpCoINutq9Q2kec--RuF0"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="JS/main.js" type="text/javascript"></script>
 <script src="JS/like.js" type="text/javascript"></script>
 <script src="JS/location.js" type="text/javascript"></script>
 <script src="JS/comment.js" type="text/javascript"></script>
+<script src="JS/weather.js" type="text/javascript"></script>
 <title>ITRAVEL WAP</title>
 </head>
 <!--<body class="landing is-mobile is-menu-visible">-->
@@ -38,7 +40,7 @@
 								<li><a href="Index.jsp">Home</a></li>
 								<li><a href="Post.jsp">Publish Post</a></li>
 								<li><a href="elements.html">Delete Post</a></li>
-								<li><a href="elements.html">Check Weather</a></li>
+								<li><a href="Weather.html">Check Weather</a></li>
 								<li><a href="Register.jsp">Sign Up</a></li>
 								<c:if test="${sessionScope == null }"><li><a href="SignIn.jsp">Sign In</a></li></c:if>
 								<li><a href="updateUser.jsp">Update Profile</a></li>
@@ -101,7 +103,8 @@
 				</div>
 			</section>
 		</mytag:simple>
-			<!-- Footer --><foo ter id="footer">
+			<!-- Footer -->
+			<footer id="footer">
 				<ul class="copyright">
 					<li>&copy; MUM</li>
 					<li>Design: GROUP TEAM</li>

@@ -17,7 +17,6 @@ article, aside, details, footer, header, menu, nav, section {
 
 body {
 	line-height: 1;
-	ad
 }
 
 ol, ul {
@@ -432,6 +431,72 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 	flex-direction: row-reverse;
 	background-color: rgba(0, 0, 0, 0.15);
 }
+
+/* Map */
+
+/* Map */
+
+#map{
+	width:500px;
+	height:400px;
+	float:left;
+	box-sizing: border-box;
+	padding:0;
+	margin:0;
+}
+#weather{
+	position:relative;
+    width:200px;
+	height:400px;
+	float: left;
+	border:none;
+	padding:0 0 0 15px;
+	background-color: #65A9F6;
+	box-sizing: border-box;
+}
+
+h4.center{
+	text-align:center;
+}
+
+div#mapContainer{
+	position:relative;
+	padding:0;
+	margin:0;
+	width:700px;
+	height:auto;
+	box-sizing: border-box;
+} 
+
+div.main{
+	position:relative;
+    width:300px;
+	height:400px;
+	float: left;
+	border:none;
+	padding:0 0 0 15px;
+	margin: 10px 0 20px 20px;
+	background-color: #65A9F6;
+	box-sizing: border-box;
+}
+
+
+div.floaty{
+	position:relative;
+    width:200px;
+	height:180px;
+	float: left;
+	border:none;
+	padding:0 0 0 15px;
+	margin: 10px 0 20px 20px;
+	background-color: #65A9F6;
+	box-sizing: border-box;
+}
+
+.hidden{
+	display:none;
+}
+
 
 /* Wrapper */
 .wrapper {
