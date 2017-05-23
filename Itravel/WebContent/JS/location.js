@@ -22,9 +22,6 @@ function flocation(event){
 		"q":location,
 		"APPID": "2cbac0d6282afa096674267c64a8af5c"
 	}).done(function(data){
-		/*var content= "#DC"+id_post;
-		$(content).remove();
-		var city= "#S"+id_post;*/
 	    location = data.name;
 		let weather= data.weather[0];
 		let grades = '&#176;K';
@@ -35,12 +32,12 @@ function flocation(event){
 		let main= weather.main;
 		let pressure = data.main.pressure;
 		let description= weather.description;
-		let text = "<b>" + location + '</b><label class="label">' 
+		let text = "<p><b>" + location + '</b><label class="label">' 
 				+ main + ':</label><span>' + description +'</span>'
 				+ '<label class="label">Humidity:</label><span>' + humidity + '</span>' 
 				+ '<label class="label">Min Temp:</label><span>' + tempMin +' '+grades +'</span>' 
 				+ '<label class="label">Max Temp:</label><span>' + tempMax +' '+grades +'</span>'
-				+ '<label class="label">Pressure:</label><span>' + pressure+'</span>';
+				+ '<label class="label">Pressure:</label><span>' + pressure+'</span></p>';
 		var content= "#CON"+id_post;
 		$(content).append('<div id="DC'+ id_post+'"><a href="#menu" id="BC'+ id_post+'">X</a>'
 		+'<div id="map"></div><div id="weather"></div></div>');

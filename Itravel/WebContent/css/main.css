@@ -419,6 +419,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 #map{
 	width:500px;
 	height:400px;
+	flaot:left;
 }
 #weather{
     width:200px;
