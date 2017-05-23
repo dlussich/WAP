@@ -41,7 +41,7 @@ function getforecast(lat,lng){
 	$.get("http://api.openweathermap.org/data/2.5/forecast",{
 		"lat":lat,
 		"lon":lng,
-		"appid": "2cbac0d6282afa096674267c64a8af5c"
+		"APPID": "2cbac0d6282afa096674267c64a8af5c"
 	 }).done(function(data){
 								 
 		 let grades = '&#176;k';
@@ -54,6 +54,7 @@ function getforecast(lat,lng){
 		 {
 			let obj = data.list[it];
 			let date = obj.dt_txt.split(' ')[0];	
+			
 			if(days.indexOf(date) == -1)
 			{
 				days[count] = date;
@@ -77,8 +78,7 @@ function getforecast(lat,lng){
 				$('#actual > p').html(description);
 				$('#actual h3').text(title);	
 					
-				}
-				
+			}
 				if(indx.length >= 2)
 				{
 					let title = new Date(data.list[indx[1]].dt_txt).toString();
@@ -89,7 +89,6 @@ function getforecast(lat,lng){
 					$('#first p').html(description);
 					$('#first h3').text(title.split(' ')[0] + ' ' +title.split(' ')[2]);
 				}
-				
 				if(indx.length >= 3)
 				{
 					let title = new Date(data.list[indx[2]].dt_txt).toString();
@@ -100,7 +99,6 @@ function getforecast(lat,lng){
 					$('#second p').html(description);
 					$('#second h3').text(title.split(' ')[0] + ' ' +title.split(' ')[2]);
 				}
-				
 				if(indx.length >= 4)
 				{
 					let title = new Date(data.list[indx[3]].dt_txt).toString();
@@ -121,7 +119,6 @@ function getforecast(lat,lng){
 					$('#fourth p').html(description);
 					$('#fourth h3').text(title.split(' ')[0] + ' ' +title.split(' ')[2]);
 				}
-				
 				if(indx.length >= 6)
 				{
 					let title = new Date(data.list[indx[5]].dt_txt).toString();
@@ -132,7 +129,7 @@ function getforecast(lat,lng){
 					$('#fifth p').html(description);
 					$('#fifth h3').text(title.split(' ')[0] + ' ' +title.split(' ')[2]);
 				}					
-		
+				
 
 	   }).fail(function(){
 		    console.log("couldn't got the weather forecast for your position");
