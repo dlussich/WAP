@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,13 +29,13 @@
 			<li class="special"><a href="#menu" class="menuToggle"><span>Menu</span></a>
 				<div id="menu">
 					<ul>
-						<li><a href="Index.jsp">Home</a></li>
-						<li><a href="Post.jsp">Publish Post</a></li>
-						<li><a href="elements.html">Delete Post</a></li>
-						<li><a href="Weather.html">Check Weather</a></li>
-						<li><a href="Register.jsp">Sign Up</a></li>
-						<li><a href="updateUser.jsp">Update Profile</a></li>
-						<li><a href="SignoutServlet">Sign Out</a></li>
+								<li><a href="Index.jsp">Home</a></li>
+								<li><a href="Post.jsp">Publish Post</a></li>
+								<li><a href="Weather.html">Check Weather</a></li>
+								<li><a href="Register.jsp">Sign Up</a></li>
+								<c:if test="${sessionScope == null }"><li><a href="SignIn.jsp">Sign In</a></li></c:if>
+								<li><a href="updateUser.jsp">Update Profile</a></li>
+								<li><a href="SignoutServlet">Sign Out</a></li>
 						
 						
 					</ul>

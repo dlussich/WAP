@@ -39,7 +39,6 @@
 							<ul>
 								<li><a href="Index.jsp">Home</a></li>
 								<li><a href="Post.jsp">Publish Post</a></li>
-								<li><a href="elements.html">Delete Post</a></li>
 								<li><a href="Weather.html">Check Weather</a></li>
 								<li><a href="Register.jsp">Sign Up</a></li>
 								<c:if test="${sessionScope == null }"><li><a href="SignIn.jsp">Sign In</a></li></c:if>
